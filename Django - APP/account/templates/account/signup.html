@@ -1,0 +1,51 @@
+{% extends 'home/layout.html' %}
+{% load static %}
+
+    <!-- made css -->
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'account/css/signup.css' %}">
+    {% endblock css %}
+    
+
+    {% block content %}
+    <div class="container mt-5 text-center">
+        <a href="{% url 'LoginPage' %}"><button class="btn btn-primary">Login</button></a>
+    </div>
+    <br>
+    <div class="container text-center signUp">
+        <form action="" method ="POST" class="row g-3">
+            {% csrf_token %}
+            <div class="col-md-3 offset-md-3">
+                <label for="inputName" class="form-label">First Name</label>
+                <input type="text" class="form-control" id="inputName" name="firstname" placeholder="Don">
+            </div>
+            <div class="col-md-3">
+                <label for="inputName2" class="form-label">Last Name</label>
+                <input type="text" class="form-control" id="inputName2" name="lastname" placeholder="Joe">
+            </div>
+            <div></div>
+            <div class="col-md-6 offset-md-3">
+                <label for="inputEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="inputEmail" name="email" placeholder="example@gmail.com">
+            </div>
+            <div></div>
+            <div class="col-md-3 offset-md-3">
+                <label for="inputPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="inputPassword" name="password" placeholder="1234">
+            </div>
+            <div class="col-md-3">
+                <label for="inputPassword2" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="inputPassword2" name="confirmpassword" placeholder="1234">
+            </div>
+            <div>
+            {% block message %}
+            {% endblock message %}
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-secondary">Sign in</button>
+            </div>
+            <div></div>
+        </form>
+    </div>
+
+    {% endblock content %}

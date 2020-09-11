@@ -1,0 +1,65 @@
+{% extends 'home/layout.html' %}
+
+{% block content %}
+
+    <div class="shadow-lg p-3 mb-5 bg-white rounded text-center" style="font-size: 25px;">Welcome To
+        <mark> {{class_name.class_name}} </mark>
+    </div>
+
+    <!-- accrdion and table -->
+    <div class="container">
+        <div class="accordion" id="accordionExample">
+
+        {% for i in class_subject %}
+            {% if i.class_name_id == class_name.id %}
+
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link btn-block collapsed text-center" type="button" data-toggle="collapse"
+                        data-target="#collapseOne"  
+                        aria-expanded="true" aria-controls="collapseOne">
+                            <span style="font-size:20px;">{{i.class_subject}}</span>
+              </button>
+                    </h2>
+                </div>
+               
+               
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                
+                    <table class="table">
+                        <thead>
+                            <tr class="table-success">
+                                <th scope="col">No.</th>
+                                <th scope="col">Chapter</th>
+                                <th scope="col">Name</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-light response">
+                        {% for j in class_topic %}
+                {% comment %} {% for i in class_subject %} {% endcomment %}
+                    {% comment %} {% if i.class_name_id == id %} {% endcomment %}
+                        {% comment %} {% if j.class_subject_id == i.id %} {% endcomment %}
+                            <tr>
+                                <th scope="row">{{j.id}}</th>
+                                <td>{{ j.chapter_name }}</td>
+                                <td>{{j.chapter_topic}}</td>
+                            </tr>
+                            {% comment %} {% endif %} {% endcomment %}
+                            {% comment %} {% endif %} {% endcomment %}
+                            {% comment %} {% endfor %} {% endcomment %}
+
+                {% endfor %}
+                        </tbody>
+                    </table>
+                    
+                </div>
+                
+            </div>
+             {% endif %}
+        {% endfor %}
+            
+        </div>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends 'home/layout.html' %}
+{% load static %}
+
+    <!-- made css -->
+    {% block css %}
+    <link rel="stylesheet" href="{% static 'account/css/signup.css' %}">
+    {% endblock css %}
+    
+
+{% block content %}
+    <div class="container mt-5 text-center">
+        <a href="{% url 'SignupPage' %}"><button class="btn btn-primary">SignUp</button></a>
+    </div>
+    <br>
+    <div class="container text-center signUp">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row justify-content-center">
+                <div class="col-md-3 align-self-center">
+                    <label for="inputEmail4" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" id="inputEmail4" placeholder="example@gmail.com">
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-3 align-self-center">
+                    <label for="inputPassword4" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="inputPassword4" name="password" placeholder="1234">
+                </div>
+            </div>
+    {% block message %}
+    {% endblock message %}
+            <div class="col align-self-center mt-3">
+                <button type="submit" class="btn btn-secondary">Log in</button>
+            </div>
+            <div class="pt-2">
+            </div>
+        </form>
+    </div>
+
+
+{% endblock content %}
